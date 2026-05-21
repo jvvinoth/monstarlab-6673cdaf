@@ -87,11 +87,27 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="w-full pt-32 pb-20 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Hero Section - Enhanced with Animated Gradient & Particles */}
+      <section className="relative w-full pt-32 pb-20 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40 overflow-hidden">
+        {/* Animated Gradient Background */}
+        <div className="hero-gradient-bg" />
+        <div className="hero-gradient-overlay" />
+        <div className="hero-gradient-glow" />
+        
+        {/* Floating Particles */}
+        <div className="particle particle-1" />
+        <div className="particle particle-2" />
+        <div className="particle particle-3" />
+        <div className="particle particle-4" />
+        <div className="particle particle-5" />
+        <div className="particle particle-6" />
+        <div className="particle particle-7" />
+        <div className="particle particle-8" />
+        
+        {/* Hero Content */}
+        <div className="hero-content max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full bg-muted/50 border border-border/50">
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full bg-muted/50 border border-border/50 backdrop-blur-sm">
               <span className="text-xs font-medium text-muted-foreground">
                 {siteContent.company.description}
               </span>
@@ -105,7 +121,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <Button 
                 size="lg" 
-                className="bg-accent hover:bg-accent/90 text-accent-foreground h-12 px-8 text-base font-medium rounded-full shadow-lg shadow-accent/20"
+                className="btn-shine bg-accent hover:bg-accent/90 text-accent-foreground h-12 px-8 text-base font-medium rounded-full shadow-lg shadow-accent/20"
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {siteContent.hero.primaryCTA}
@@ -114,7 +130,7 @@ export default function Home() {
               <Button 
                 size="lg" 
                 variant="ghost" 
-                className="h-12 px-8 text-base font-medium rounded-full hover:bg-muted/50"
+                className="h-12 px-8 text-base font-medium rounded-full hover:bg-muted/50 backdrop-blur-sm"
                 onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {siteContent.hero.secondaryCTA}
@@ -126,7 +142,7 @@ export default function Home() {
                 {[1, 2, 3, 4].map((i) => (
                   <div 
                     key={i} 
-                    className="h-9 w-9 rounded-full border-2 border-background bg-gradient-to-br from-muted to-muted-foreground/20"
+                    className="h-9 w-9 rounded-full border-2 border-background bg-gradient-to-br from-accent/20 to-accent/40 backdrop-blur-sm"
                   />
                 ))}
               </div>
@@ -137,7 +153,7 @@ export default function Home() {
           </div>
           
           <div className="mt-20 max-w-6xl mx-auto">
-            <div className="relative rounded-2xl overflow-hidden shadow-elegant border border-border/50">
+            <div className="relative rounded-2xl overflow-hidden shadow-elegant border border-border/50 backdrop-blur-sm bg-card/10">
               <Image
                 src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&w=1600"
                 alt={siteContent.hero.imageAlt}
@@ -199,22 +215,20 @@ export default function Home() {
               {siteContent.howItWorks.subtitle}
             </p>
           </div>
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {siteContent.howItWorks.steps.map((step, index) => (
               <div key={index} className="relative">
-                <div className="mb-4">
-                  <span className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-accent/10 text-accent font-medium text-sm">
-                    {step.number}
-                  </span>
+                <div className="flex flex-col items-start">
+                  <div className="mb-4 inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-accent/10 border border-accent/20">
+                    <span className="text-2xl font-semibold text-accent font-mono">{step.number}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">{step.title}</h3>
+                  <p className="text-[15px] leading-relaxed font-light text-muted-foreground">
+                    {step.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">
-                  {step.title}
-                </h3>
-                <p className="text-[15px] text-muted-foreground leading-relaxed font-light">
-                  {step.description}
-                </p>
                 {index < siteContent.howItWorks.steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-6 left-full w-full h-[2px] bg-border/30" style={{ marginLeft: '24px', width: 'calc(100% - 48px)' }} />
+                  <div className="hidden lg:block absolute top-7 left-[calc(100%+1rem)] w-[calc(100%-2rem)] h-[2px] bg-gradient-to-r from-accent/40 to-transparent" />
                 )}
               </div>
             ))}
@@ -225,7 +239,7 @@ export default function Home() {
       {/* Integrations Section */}
       <section className="w-full py-24 md:py-32 lg:py-40">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 lg:mb-20">
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
               {siteContent.integrations.title}
             </h2>
@@ -233,20 +247,22 @@ export default function Home() {
               {siteContent.integrations.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {siteContent.integrations.technologies.map((tech, index) => (
               <div 
                 key={index} 
-                className="flex items-center justify-center p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300"
+                className="flex flex-col items-center justify-center p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-border hover:bg-card/80 transition-all duration-300"
               >
-                <div className="relative h-16 w-full">
+                <div className="relative w-16 h-16 mb-3 rounded-lg overflow-hidden bg-muted/50">
                   <Image
                     src={tech.logo}
                     alt={tech.name}
-                    fill
-                    className="object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                    width={64}
+                    height={64}
+                    className="object-contain"
                   />
                 </div>
+                <span className="text-sm font-medium text-muted-foreground">{tech.name}</span>
               </div>
             ))}
           </div>
@@ -264,19 +280,19 @@ export default function Home() {
               {siteContent.pricing.subtitle}
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+          <div className="grid gap-8 lg:grid-cols-3">
             {siteContent.pricing.tiers.map((tier, index) => (
               <Card 
-                key={index} 
+                key={index}
                 className={`relative border ${
                   tier.popular 
-                    ? 'border-accent shadow-elegant bg-card' 
-                    : 'border-border/50 bg-card/50 backdrop-blur-sm'
-                }`}
+                    ? 'border-accent shadow-lg shadow-accent/10 bg-card' 
+                    : 'border-border/50 bg-card/50'
+                } backdrop-blur-sm`}
               >
                 {tier.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-accent text-accent-foreground border-0 px-3 py-1 text-xs font-medium">
+                    <Badge className="bg-accent text-accent-foreground px-3 py-1 text-xs font-medium">
                       Most Popular
                     </Badge>
                   </div>
@@ -285,35 +301,34 @@ export default function Home() {
                   <CardTitle className="text-xl font-semibold mb-2">{tier.name}</CardTitle>
                   <CardDescription className="text-sm font-light">{tier.description}</CardDescription>
                   <div className="mt-6">
-                    <div className="flex items-baseline">
+                    <div className="flex items-baseline gap-2">
                       {tier.currency && (
-                        <span className="text-4xl font-semibold tracking-tight">{tier.currency} {tier.price}</span>
+                        <span className="text-3xl font-semibold text-foreground">{tier.currency}</span>
                       )}
-                      {!tier.currency && (
-                        <span className="text-4xl font-semibold tracking-tight">{tier.price}</span>
-                      )}
+                      <span className="text-5xl font-semibold text-foreground">{tier.price}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground font-light mt-1">{tier.period}</p>
+                    <p className="text-sm text-muted-foreground mt-1">{tier.period}</p>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-6">
-                  <ul className="space-y-3">
+                <CardContent>
+                  <ul className="space-y-3 mb-8">
                     {tier.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
-                        <span className="text-sm text-muted-foreground font-light leading-relaxed">{feature}</span>
+                        <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
+                        <span className="text-sm font-light text-muted-foreground">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Button 
-                    className={`w-full h-11 text-base font-medium rounded-xl ${
-                      tier.popular
-                        ? 'bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg shadow-accent/20'
-                        : 'bg-muted hover:bg-muted/80 text-foreground'
+                    className={`w-full h-11 rounded-full ${
+                      tier.popular 
+                        ? 'bg-accent hover:bg-accent/90 text-accent-foreground' 
+                        : 'bg-secondary hover:bg-secondary/80 text-secondary-foreground'
                     }`}
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   >
                     {tier.cta}
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </CardContent>
               </Card>
@@ -324,29 +339,33 @@ export default function Home() {
 
       {/* Demo CTA Section */}
       <section className="w-full py-24 md:py-32 lg:py-40">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
-            {siteContent.demo.title}
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground mb-10 font-light">
-            {siteContent.demo.subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-            {siteContent.demo.benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
-                <span className="text-sm text-muted-foreground font-light">{benefit}</span>
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <Card className="border-border/50 bg-gradient-to-br from-accent/5 to-accent/10 backdrop-blur-sm shadow-elegant">
+            <CardContent className="p-12 md:p-16 text-center">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
+                {siteContent.demo.title}
+              </h2>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 font-light">
+                {siteContent.demo.subtitle}
+              </p>
+              <div className="flex flex-wrap justify-center gap-6 mb-10">
+                {siteContent.demo.benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-accent" />
+                    <span className="text-sm font-medium text-foreground">{benefit}</span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <Button 
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground h-12 px-8 text-base font-medium rounded-full shadow-lg shadow-accent/20"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            {siteContent.demo.cta}
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+              <Button 
+                size="lg"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground h-12 px-8 text-base font-medium rounded-full shadow-lg shadow-accent/20"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                {siteContent.demo.cta}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -357,64 +376,60 @@ export default function Home() {
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
               {siteContent.contact.title}
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground font-light">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               {siteContent.contact.subtitle}
             </p>
           </div>
+          
           <div className="grid gap-12 lg:grid-cols-2">
-            <Card className="border border-border/50 bg-card/50 backdrop-blur-sm shadow-none">
-              <CardHeader>
-                <CardTitle className="text-xl font-semibold">Send us a message</CardTitle>
-                <CardDescription className="text-sm font-light">
-                  Fill out the form and we&apos;ll get back to you within 24 hours
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Contact Form */}
+            <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="name" className="text-sm font-medium">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
+                    <Input 
+                      id="name" 
+                      name="name" 
                       placeholder={siteContent.contact.form.namePlaceholder}
-                      required
-                      className="h-11 bg-background border-border/50 focus:border-accent rounded-lg"
+                      required 
+                      className="bg-background/50"
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="email" className="text-sm font-medium">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
+                    <Input 
+                      id="email" 
+                      name="email" 
+                      type="email" 
                       placeholder={siteContent.contact.form.emailPlaceholder}
-                      required
-                      className="h-11 bg-background border-border/50 focus:border-accent rounded-lg"
+                      required 
+                      className="bg-background/50"
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="company" className="text-sm font-medium">Company</Label>
-                    <Input
-                      id="company"
-                      name="company"
+                    <Input 
+                      id="company" 
+                      name="company" 
                       placeholder={siteContent.contact.form.companyPlaceholder}
-                      className="h-11 bg-background border-border/50 focus:border-accent rounded-lg"
+                      className="bg-background/50"
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="message" className="text-sm font-medium">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
+                    <Textarea 
+                      id="message" 
+                      name="message" 
                       placeholder={siteContent.contact.form.messagePlaceholder}
-                      required
                       rows={5}
-                      className="bg-background border-border/50 focus:border-accent rounded-lg resize-none"
+                      required 
+                      className="bg-background/50 resize-none"
                     />
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full h-11 bg-accent hover:bg-accent/90 text-accent-foreground font-medium rounded-xl shadow-lg shadow-accent/20"
+                    className="w-full h-11 bg-accent hover:bg-accent/90 text-accent-foreground rounded-full"
                   >
                     {siteContent.contact.form.submitText}
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -423,45 +438,48 @@ export default function Home() {
               </CardContent>
             </Card>
 
+            {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-lg font-semibold mb-6 text-foreground">Contact Information</h3>
-                <div className="space-y-5">
+                <h3 className="text-xl font-semibold mb-6 text-foreground">Get In Touch</h3>
+                <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                       <Mail className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium mb-1">Email</p>
+                      <p className="text-sm font-medium text-foreground mb-1">Email</p>
                       <a 
                         href={`mailto:${siteContent.company.contact.email}`}
-                        className="text-sm text-muted-foreground hover:text-accent transition-colors font-light"
+                        className="text-sm text-muted-foreground hover:text-accent transition-colors"
                       >
                         {siteContent.company.contact.email}
                       </a>
                     </div>
                   </div>
+                  
                   <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                       <Phone className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium mb-1">Phone</p>
+                      <p className="text-sm font-medium text-foreground mb-1">Phone</p>
                       <a 
                         href={`tel:${siteContent.company.contact.phone}`}
-                        className="text-sm text-muted-foreground hover:text-accent transition-colors font-light"
+                        className="text-sm text-muted-foreground hover:text-accent transition-colors"
                       >
                         {siteContent.company.contact.phone}
                       </a>
                     </div>
                   </div>
+                  
                   <div className="flex items-start gap-4">
-                    <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                    <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                       <MapPin className="h-5 w-5 text-accent" />
                     </div>
                     <div>
-                      <p className="text-sm font-medium mb-1">Location</p>
-                      <p className="text-sm text-muted-foreground font-light">
+                      <p className="text-sm font-medium text-foreground mb-1">Location</p>
+                      <p className="text-sm text-muted-foreground">
                         {siteContent.footer.address}
                       </p>
                     </div>
@@ -469,19 +487,12 @@ export default function Home() {
                 </div>
               </div>
               
-              <Separator className="bg-border/50" />
-              
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-foreground">Office Hours</h3>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground font-light">Monday - Friday</span>
-                    <span className="font-medium">9:00 AM - 6:00 PM</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground font-light">Saturday - Sunday</span>
-                    <span className="font-medium">Closed</span>
-                  </div>
+              <div className="p-6 rounded-xl bg-accent/5 border border-accent/20">
+                <h4 className="text-base font-semibold mb-3 text-foreground">Office Hours</h4>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                  <p>Saturday: 10:00 AM - 2:00 PM</p>
+                  <p>Sunday: Closed</p>
                 </div>
               </div>
             </div>
@@ -490,32 +501,28 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full border-t border-border/40 py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <footer className="w-full border-t border-border/40 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5 mb-12">
             <div className="lg:col-span-2">
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
+              <h3 className="text-xl font-semibold mb-4 text-foreground">
                 {siteContent.company.name}
               </h3>
-              <p className="text-sm text-muted-foreground mb-6 max-w-sm font-light leading-relaxed">
+              <p className="text-sm text-muted-foreground mb-6 font-light max-w-xs">
                 {siteContent.footer.tagline}
               </p>
-              <div className="space-y-2">
-                <p className="text-sm text-muted-foreground font-light">
-                  {siteContent.footer.address}
-                </p>
-                <p className="text-sm text-muted-foreground font-light">
-                  {siteContent.company.location}
-                </p>
-              </div>
+              <p className="text-sm text-muted-foreground font-light">
+                {siteContent.footer.address}
+              </p>
             </div>
+            
             {siteContent.footer.sections.map((section, index) => (
               <div key={index}>
                 <h4 className="text-sm font-semibold mb-4 text-foreground">{section.title}</h4>
                 <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a
+                      <a 
                         href={link.href}
                         className="text-sm text-muted-foreground hover:text-accent transition-colors font-light"
                       >
@@ -527,16 +534,18 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <Separator className="bg-border/40 mb-8" />
+          
+          <Separator className="mb-8" />
+          
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-muted-foreground font-light">
+            <p className="text-sm text-muted-foreground font-light">
               {siteContent.footer.copyright}
             </p>
             <div className="flex gap-6">
-              <a href="#" className="text-xs text-muted-foreground hover:text-accent transition-colors font-light">
+              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors font-light">
                 Privacy Policy
               </a>
-              <a href="#" className="text-xs text-muted-foreground hover:text-accent transition-colors font-light">
+              <a href="#" className="text-sm text-muted-foreground hover:text-accent transition-colors font-light">
                 Terms of Service
               </a>
             </div>

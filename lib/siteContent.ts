@@ -14,6 +14,8 @@ export const siteContent = {
     subheadline: "Expert mobile app development and tech consulting for startups ready to disrupt their market. From MVP to market leader.",
     primaryCTA: "Request a Demo",
     secondaryCTA: "View Our Work",
+    videoUrl: "https://cdn.coverr.co/videos/coverr-digital-network-data-visualization-8523/1080p.mp4",
+    videoFallback: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&w=1600",
     image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&w=1600",
     imageAlt: "Mobile app development workspace",
   },

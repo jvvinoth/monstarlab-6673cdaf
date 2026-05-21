@@ -14,7 +14,7 @@ export const siteContent = {
     subheadline: "Expert mobile app development and tech consulting for startups ready to disrupt their market. From MVP to market leader.",
     primaryCTA: "Request a Demo",
     secondaryCTA: "View Our Work",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=800&fit=crop",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&w=1600",
     imageAlt: "Mobile app development workspace",
   },
   features: [
@@ -79,12 +79,12 @@ export const siteContent = {
     title: "Built With Industry-Leading Technology",
     subtitle: "We leverage the best tools to deliver exceptional results",
     technologies: [
-      { name: "React Native", logo: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=120&h=60&fit=crop" },
-      { name: "Flutter", logo: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=120&h=60&fit=crop" },
-      { name: "iOS Swift", logo: "https://images.unsplash.com/photo-1621839673705-6617adf9e890?w=120&h=60&fit=crop" },
-      { name: "Android Kotlin", logo: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=120&h=60&fit=crop" },
-      { name: "Firebase", logo: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=120&h=60&fit=crop" },
-      { name: "AWS", logo: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=120&h=60&fit=crop" },
+      { name: "React Native", logo: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&w=200" },
+      { name: "Flutter", logo: "https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&w=200" },
+      { name: "iOS Swift", logo: "https://images.unsplash.com/photo-1621839673705-6617adf9e890?auto=format&w=200" },
+      { name: "Android Kotlin", logo: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&w=200" },
+      { name: "Firebase", logo: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&w=200" },
+      { name: "AWS", logo: "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&w=200" },
     ],
   },
   pricing: {

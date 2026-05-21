@@ -20,7 +20,8 @@ import {
   ArrowRight,
   Mail,
   Phone,
-  MapPin
+  MapPin,
+  ChevronRight
 } from "lucide-react";
 
 const iconMap = {
@@ -49,25 +50,35 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary via-purple-600 to-blue-600 bg-clip-text text-transparent">
+      <nav className="fixed top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 flex h-14 items-center justify-between">
+          <div className="flex items-center">
+            <span className="text-xl font-semibold tracking-tight text-foreground">
               {siteContent.company.name}
             </span>
           </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" className="hidden md:inline-flex" onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}>
+          <div className="flex items-center gap-8">
+            <button 
+              className="hidden md:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Features
-            </Button>
-            <Button variant="ghost" className="hidden md:inline-flex" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
+            </button>
+            <button 
+              className="hidden md:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Pricing
-            </Button>
-            <Button variant="ghost" className="hidden md:inline-flex" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            </button>
+            <button 
+              className="hidden md:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               Contact
-            </Button>
+            </button>
             <Button 
-              className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+              size="sm"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground h-8 px-4 text-sm font-medium rounded-full"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {siteContent.hero.primaryCTA}
@@ -77,89 +88,96 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="w-full py-16 sm:py-20 md:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="flex flex-col gap-6">
-              <Badge className="w-fit bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0">
+      <section className="w-full pt-32 pb-20 md:pt-40 md:pb-32 lg:pt-48 lg:pb-40">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full bg-muted/50 border border-border/50">
+              <span className="text-xs font-medium text-muted-foreground">
                 {siteContent.company.description}
-              </Badge>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                {siteContent.hero.headline}
-              </h1>
-              <p className="text-xl text-muted-foreground md:text-2xl">
-                {siteContent.hero.subheadline}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg h-12"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  {siteContent.hero.primaryCTA}
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="text-lg h-12"
-                  onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  {siteContent.hero.secondaryCTA}
-                </Button>
-              </div>
-              <div className="flex items-center gap-6 pt-4">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <div key={i} className="h-10 w-10 rounded-full border-2 border-background bg-gradient-to-br from-purple-400 to-blue-400" />
-                  ))}
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Trusted by <span className="font-semibold text-foreground">50+ startups</span> across Asia
-                </p>
-              </div>
+              </span>
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 blur-3xl" />
-              <div className="relative rounded-lg overflow-hidden border shadow-2xl">
-                <Image
-                  src={siteContent.hero.image}
-                  alt={siteContent.hero.imageAlt}
-                  width={1200}
-                  height={800}
-                  className="object-cover w-full h-auto"
-                  priority
-                />
+            <h1 className="text-5xl font-semibold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl mb-6 text-foreground">
+              {siteContent.hero.headline}
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+              {siteContent.hero.subheadline}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <Button 
+                size="lg" 
+                className="bg-accent hover:bg-accent/90 text-accent-foreground h-12 px-8 text-base font-medium rounded-full shadow-lg shadow-accent/20"
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                {siteContent.hero.primaryCTA}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button 
+                size="lg" 
+                variant="ghost" 
+                className="h-12 px-8 text-base font-medium rounded-full hover:bg-muted/50"
+                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                {siteContent.hero.secondaryCTA}
+                <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <div className="flex -space-x-3">
+                {[1, 2, 3, 4].map((i) => (
+                  <div 
+                    key={i} 
+                    className="h-9 w-9 rounded-full border-2 border-background bg-gradient-to-br from-muted to-muted-foreground/20"
+                  />
+                ))}
               </div>
+              <p className="text-sm text-muted-foreground font-light">
+                Trusted by <span className="font-medium text-foreground">50+</span> startups
+              </p>
+            </div>
+          </div>
+          
+          <div className="mt-20 max-w-6xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden shadow-elegant border border-border/50">
+              <Image
+                src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&w=1600"
+                alt={siteContent.hero.imageAlt}
+                width={1600}
+                height={900}
+                className="object-cover w-full h-auto"
+                priority
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section id="features" className="w-full py-16 sm:py-20 md:py-24 lg:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+      <section id="features" className="w-full py-24 md:py-32 lg:py-40">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16 lg:mb-20">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
               Why Startups Choose Us
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               Everything you need to build, launch, and scale your mobile app
             </p>
           </div>
-          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {siteContent.features.map((feature, index) => {
               const Icon = iconMap[feature.icon as keyof typeof iconMap];
               return (
-                <Card key={index} className="border-2 hover:border-purple-600/50 transition-colors">
-                  <CardHeader>
-                    <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center mb-4">
-                      <Icon className="h-6 w-6 text-white" />
+                <Card 
+                  key={index} 
+                  className="border border-border/50 bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300 shadow-none"
+                >
+                  <CardHeader className="pb-4">
+                    <div className="h-11 w-11 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                      <Icon className="h-5 w-5 text-accent" />
                     </div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="text-lg font-semibold">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-base">
+                    <CardDescription className="text-[15px] leading-relaxed font-light text-muted-foreground">
                       {feature.description}
                     </CardDescription>
                   </CardContent>
@@ -171,30 +189,32 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="w-full py-16 sm:py-20 md:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+      <section id="how-it-works" className="w-full py-24 md:py-32 lg:py-40 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16 lg:mb-20">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
               {siteContent.howItWorks.title}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               {siteContent.howItWorks.subtitle}
             </p>
           </div>
-          <div className="grid gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
             {siteContent.howItWorks.steps.map((step, index) => (
               <div key={index} className="relative">
-                <div className="flex flex-col items-center text-center">
-                  <div className="h-20 w-20 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 flex items-center justify-center mb-6">
-                    <span className="text-3xl font-bold text-white font-mono">
-                      {step.number}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                  <p className="text-muted-foreground">{step.description}</p>
+                <div className="mb-4">
+                  <span className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-accent/10 text-accent font-medium text-sm">
+                    {step.number}
+                  </span>
                 </div>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">
+                  {step.title}
+                </h3>
+                <p className="text-[15px] text-muted-foreground leading-relaxed font-light">
+                  {step.description}
+                </p>
                 {index < siteContent.howItWorks.steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 opacity-30 -translate-x-1/2" />
+                  <div className="hidden lg:block absolute top-6 left-full w-full h-[2px] bg-border/30" style={{ marginLeft: '24px', width: 'calc(100% - 48px)' }} />
                 )}
               </div>
             ))}
@@ -203,28 +223,28 @@ export default function Home() {
       </section>
 
       {/* Integrations Section */}
-      <section className="w-full py-16 sm:py-20 md:py-24 lg:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+      <section className="w-full py-24 md:py-32 lg:py-40">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
               {siteContent.integrations.title}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               {siteContent.integrations.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-5xl mx-auto">
             {siteContent.integrations.technologies.map((tech, index) => (
               <div 
                 key={index} 
-                className="flex items-center justify-center p-6 rounded-lg border bg-card hover:border-purple-600/50 transition-colors"
+                className="flex items-center justify-center p-6 rounded-xl border border-border/50 bg-card/50 backdrop-blur-sm hover:border-border transition-all duration-300"
               >
-                <div className="relative w-full h-12">
+                <div className="relative h-16 w-full">
                   <Image
                     src={tech.logo}
                     alt={tech.name}
                     fill
-                    className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+                    className="object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
                   />
                 </div>
               </div>
@@ -234,58 +254,63 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="w-full py-16 sm:py-20 md:py-24 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+      <section id="pricing" className="w-full py-24 md:py-32 lg:py-40 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16 lg:mb-20">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
               {siteContent.pricing.title}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto font-light">
               {siteContent.pricing.subtitle}
             </p>
           </div>
-          <div className="grid gap-6 lg:gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
             {siteContent.pricing.tiers.map((tier, index) => (
               <Card 
                 key={index} 
-                className={`relative ${tier.popular ? 'border-purple-600 shadow-lg shadow-purple-600/20' : 'border-2'}`}
+                className={`relative border ${
+                  tier.popular 
+                    ? 'border-accent shadow-elegant bg-card' 
+                    : 'border-border/50 bg-card/50 backdrop-blur-sm'
+                }`}
               >
                 {tier.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0">
+                    <Badge className="bg-accent text-accent-foreground border-0 px-3 py-1 text-xs font-medium">
                       Most Popular
                     </Badge>
                   </div>
                 )}
-                <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-2xl mb-2">{tier.name}</CardTitle>
-                  <CardDescription className="text-base mb-6">
-                    {tier.description}
-                  </CardDescription>
-                  <div className="flex items-baseline justify-center gap-2">
-                    {tier.currency && (
-                      <span className="text-lg text-muted-foreground">{tier.currency}</span>
-                    )}
-                    <span className="text-5xl font-bold tracking-tight">
-                      {tier.price}
-                    </span>
+                <CardHeader className="pb-8">
+                  <CardTitle className="text-xl font-semibold mb-2">{tier.name}</CardTitle>
+                  <CardDescription className="text-sm font-light">{tier.description}</CardDescription>
+                  <div className="mt-6">
+                    <div className="flex items-baseline">
+                      {tier.currency && (
+                        <span className="text-4xl font-semibold tracking-tight">{tier.currency} {tier.price}</span>
+                      )}
+                      {!tier.currency && (
+                        <span className="text-4xl font-semibold tracking-tight">{tier.price}</span>
+                      )}
+                    </div>
+                    <p className="text-sm text-muted-foreground font-light mt-1">{tier.period}</p>
                   </div>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    {tier.period}
-                  </p>
                 </CardHeader>
-                <CardContent>
-                  <ul className="space-y-3 mb-8">
+                <CardContent className="space-y-6">
+                  <ul className="space-y-3">
                     {tier.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-purple-600 shrink-0 mt-0.5" />
-                        <span className="text-sm">{feature}</span>
+                        <CheckCircle2 className="h-5 w-5 text-accent mt-0.5 shrink-0" />
+                        <span className="text-sm text-muted-foreground font-light leading-relaxed">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <Button 
-                    className={`w-full ${tier.popular ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700' : ''}`}
-                    variant={tier.popular ? 'default' : 'outline'}
+                    className={`w-full h-11 text-base font-medium rounded-xl ${
+                      tier.popular
+                        ? 'bg-accent hover:bg-accent/90 text-accent-foreground shadow-lg shadow-accent/20'
+                        : 'bg-muted hover:bg-muted/80 text-foreground'
+                    }`}
                     onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                   >
                     {tier.cta}
@@ -298,172 +323,201 @@ export default function Home() {
       </section>
 
       {/* Demo CTA Section */}
-      <section className="w-full py-16 sm:py-20 md:py-24 lg:py-32 bg-gradient-to-br from-purple-600/10 via-blue-600/10 to-purple-600/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-6">
+      <section className="w-full py-24 md:py-32 lg:py-40">
+        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
             {siteContent.demo.title}
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 font-light">
             {siteContent.demo.subtitle}
           </p>
-          <div className="grid gap-4 sm:grid-cols-3 mb-10 max-w-2xl mx-auto">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
             {siteContent.demo.benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center justify-center gap-2 text-sm">
-                <CheckCircle2 className="h-5 w-5 text-purple-600 shrink-0" />
-                <span>{benefit}</span>
+              <div key={index} className="flex items-center gap-2">
+                <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
+                <span className="text-sm text-muted-foreground font-light">{benefit}</span>
               </div>
             ))}
           </div>
           <Button 
             size="lg"
-            className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-lg h-14 px-8"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground h-12 px-8 text-base font-medium rounded-full shadow-lg shadow-accent/20"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             {siteContent.demo.cta}
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </div>
       </section>
 
-      {/* Contact Form Section */}
-      <section id="contact" className="w-full py-16 sm:py-20 md:py-24 lg:py-32">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-4">
+      {/* Contact Section */}
+      <section id="contact" className="w-full py-24 md:py-32 lg:py-40 bg-muted/30">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl mb-4 text-foreground">
               {siteContent.contact.title}
             </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground font-light">
               {siteContent.contact.subtitle}
             </p>
           </div>
-          <div className="grid gap-8 lg:grid-cols-2">
-            <Card>
+          <div className="grid gap-12 lg:grid-cols-2">
+            <Card className="border border-border/50 bg-card/50 backdrop-blur-sm shadow-none">
               <CardHeader>
-                <CardTitle>Send us a message</CardTitle>
-                <CardDescription>
-                  Fill out the form and we'll get back to you within 24 hours
+                <CardTitle className="text-xl font-semibold">Send us a message</CardTitle>
+                <CardDescription className="text-sm font-light">
+                  Fill out the form and we&apos;ll get back to you within 24 hours
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input 
-                      id="name" 
-                      name="name" 
+                    <Label htmlFor="name" className="text-sm font-medium">Name</Label>
+                    <Input
+                      id="name"
+                      name="name"
                       placeholder={siteContent.contact.form.namePlaceholder}
-                      required 
+                      required
+                      className="h-11 bg-background border-border/50 focus:border-accent rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input 
-                      id="email" 
-                      name="email" 
-                      type="email" 
+                    <Label htmlFor="email" className="text-sm font-medium">Email</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
                       placeholder={siteContent.contact.form.emailPlaceholder}
-                      required 
+                      required
+                      className="h-11 bg-background border-border/50 focus:border-accent rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="company">Company</Label>
-                    <Input 
-                      id="company" 
-                      name="company" 
+                    <Label htmlFor="company" className="text-sm font-medium">Company</Label>
+                    <Input
+                      id="company"
+                      name="company"
                       placeholder={siteContent.contact.form.companyPlaceholder}
+                      className="h-11 bg-background border-border/50 focus:border-accent rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea 
-                      id="message" 
-                      name="message" 
+                    <Label htmlFor="message" className="text-sm font-medium">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
                       placeholder={siteContent.contact.form.messagePlaceholder}
-                      rows={4}
-                      required 
+                      required
+                      rows={5}
+                      className="bg-background border-border/50 focus:border-accent rounded-lg resize-none"
                     />
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+                    className="w-full h-11 bg-accent hover:bg-accent/90 text-accent-foreground font-medium rounded-xl shadow-lg shadow-accent/20"
                   >
                     {siteContent.contact.form.submitText}
+                    <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </form>
               </CardContent>
             </Card>
-            <div className="space-y-6">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-purple-600" />
-                    Email
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <a 
-                    href={`mailto:${siteContent.company.contact.email}`}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {siteContent.company.contact.email}
-                  </a>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-purple-600" />
-                    Phone
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <a 
-                    href={`tel:${siteContent.company.contact.phone}`}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {siteContent.company.contact.phone}
-                  </a>
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-3">
-                    <MapPin className="h-5 w-5 text-purple-600" />
-                    Location
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">
-                    {siteContent.footer.address}
-                  </p>
-                </CardContent>
-              </Card>
+
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-lg font-semibold mb-6 text-foreground">Contact Information</h3>
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4">
+                    <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <Mail className="h-5 w-5 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium mb-1">Email</p>
+                      <a 
+                        href={`mailto:${siteContent.company.contact.email}`}
+                        className="text-sm text-muted-foreground hover:text-accent transition-colors font-light"
+                      >
+                        {siteContent.company.contact.email}
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <Phone className="h-5 w-5 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium mb-1">Phone</p>
+                      <a 
+                        href={`tel:${siteContent.company.contact.phone}`}
+                        className="text-sm text-muted-foreground hover:text-accent transition-colors font-light"
+                      >
+                        {siteContent.company.contact.phone}
+                      </a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="h-10 w-10 rounded-lg bg-accent/10 flex items-center justify-center shrink-0">
+                      <MapPin className="h-5 w-5 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium mb-1">Location</p>
+                      <p className="text-sm text-muted-foreground font-light">
+                        {siteContent.footer.address}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <Separator className="bg-border/50" />
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-4 text-foreground">Office Hours</h3>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground font-light">Monday - Friday</span>
+                    <span className="font-medium">9:00 AM - 6:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground font-light">Saturday - Sunday</span>
+                    <span className="font-medium">Closed</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="w-full border-t bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mb-8">
-            <div className="space-y-4">
-              <h3 className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+      <footer className="w-full border-t border-border/40 py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5 mb-12">
+            <div className="lg:col-span-2">
+              <h3 className="text-xl font-semibold mb-3 text-foreground">
                 {siteContent.company.name}
               </h3>
-              <p className="text-sm text-muted-foreground max-w-xs">
+              <p className="text-sm text-muted-foreground mb-6 max-w-sm font-light leading-relaxed">
                 {siteContent.footer.tagline}
               </p>
+              <div className="space-y-2">
+                <p className="text-sm text-muted-foreground font-light">
+                  {siteContent.footer.address}
+                </p>
+                <p className="text-sm text-muted-foreground font-light">
+                  {siteContent.company.location}
+                </p>
+              </div>
             </div>
             {siteContent.footer.sections.map((section, index) => (
-              <div key={index} className="space-y-4">
-                <h4 className="font-semibold">{section.title}</h4>
-                <ul className="space-y-2">
+              <div key={index}>
+                <h4 className="text-sm font-semibold mb-4 text-foreground">{section.title}</h4>
+                <ul className="space-y-3">
                   {section.links.map((link, linkIndex) => (
                     <li key={linkIndex}>
-                      <a 
+                      <a
                         href={link.href}
-                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        className="text-sm text-muted-foreground hover:text-accent transition-colors font-light"
                       >
                         {link.label}
                       </a>
@@ -473,14 +527,18 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <Separator className="mb-8" />
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
+          <Separator className="bg-border/40 mb-8" />
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-xs text-muted-foreground font-light">
               {siteContent.footer.copyright}
             </p>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="h-4 w-4" />
-              <span>{siteContent.company.location}</span>
+            <div className="flex gap-6">
+              <a href="#" className="text-xs text-muted-foreground hover:text-accent transition-colors font-light">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-xs text-muted-foreground hover:text-accent transition-colors font-light">
+                Terms of Service
+              </a>
             </div>
           </div>
         </div>
